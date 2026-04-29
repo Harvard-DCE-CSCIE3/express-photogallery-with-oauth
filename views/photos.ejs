@@ -1,0 +1,28 @@
+<%- include('header', { title: 'Photo Gallery' }) %>
+  <div class="page-content"> 
+    <h2>Photo Gallery</h2>
+    <div class="gallery">
+        <% if (photos && photos.length > 0) { %>
+        <% photos.forEach(function(photo) { %>
+            <div class="photo-item">
+              <a href="/photos/<%= photo._id %>">
+                <img src="<%= photo.imageUrl %>" alt="<%= photo.title %>">
+                <h3><%= photo.title %></h3>
+              </a>
+              <% if (photo.userId && photo.userId.name) { %>
+                <p class="photo-uploader">Uploaded by: <%= photo.userId.name %></p>
+              <% } %>
+              <% if (photo.description) { %>
+                  <p><%= photo.description %></p>
+              <% } %> 
+            </div>
+        <% }); %>
+        <% } else { %>
+        <p>No photos yet. <a href="/photos/new">Add the first one!</a></p>
+        <% } %>
+    </div>
+
+    <p><a href="/">Back to Home Page</a></p>
+  </div>
+</body>
+</html>

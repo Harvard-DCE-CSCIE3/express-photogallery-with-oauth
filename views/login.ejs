@@ -1,0 +1,13 @@
+<%- include('header', { title: title }) %>
+  <div class="page-content">
+    <h1>Sign in</h1>
+    <p>Use your Google account to continue.</p>
+
+    <% if (error) { %>
+      <p style="color: #b00020;">Login failed. Please try again.</p>
+    <% } %>
+
+    <p><a href="/auth/google" class="btn-primary">Continue with Google</a></p>
+  </div>
+</body>
+</html>

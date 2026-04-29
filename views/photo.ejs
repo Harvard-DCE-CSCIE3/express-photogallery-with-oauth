@@ -1,0 +1,34 @@
+<%- include('header', { title: title }) %>
+  <div class="page-content">  
+    <h1>Photo Details</h1>
+    <% if (photo) { %>
+      <div class="photo-item">
+        <h1><%= photo.title %></h1>
+        <img  src="<%= photo.imageUrl %>" alt="<%= photo.title %>">
+        <% if (photo.userId && photo.userId.name) { %>
+          <p class="photo-uploader">Uploaded by: <%= photo.userId.name %></p>
+        <% } %>
+        <% if (photo.description) { %>
+          <p class="photo-description"><%= photo.description %></p>
+        <% } %>
+        <p class="photo-id">Photo ID: <%= photo.id %></p>
+      </div>
+      
+      <div class="photo-actions">
+        <a href="/photos/<%= photo.id %>/edit">Edit Photo</a> | 
+        <form action="/photos/<%= photo.id %>/delete" method="POST" style="display: inline;" 
+              onsubmit="return confirm('Are you sure you want to delete this photo?');">
+          <button type="submit">Delete Photo</button>
+        </form>
+      </div>
+    <% } else { %>
+      <p>Photo not found.</p>
+    <% } %>
+    
+    <p>
+      <a href="/photos">Back to Gallery</a> | 
+      <a href="/">Home</a>
+    </p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <header class="site-header">
+    <h1>CSCI E31 Photo Gallery Demo App</h1>
+    <nav>
+      <a href="/">Home</a> | 
+      <a href="/photos">Gallery</a> | 
+      <a href="/photos/new">Add Photo</a> |
+      <% if (currentUser) { %>
+        <span>Signed in as <%= currentUser.name || currentUser.email || 'User' %></span> |
+        <a href="/auth/logout">Logout</a>
+      <% } else { %>
+        <a href="/auth/login">Login</a>
+      <% } %>
+    </nav>
+  </header>
